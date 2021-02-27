@@ -1,6 +1,6 @@
 #coding:utf-8
 import ServerConfig #导入服务器配置文件
-global s
+global s #初始化部分全局变量
 s = 0
 global data
 data = 0
@@ -17,7 +17,7 @@ tcpSerSock.bind(ADDR)
 tcpSerSock.listen(ServerConfig.Server_max_listen)
 socks=[]                             #放每个客户端的socket
 
-def handle():
+def handle(): #SOCKET部分
     while True:
         global s
         for s in socks:
@@ -30,7 +30,7 @@ def handle():
                 continue
             s.send('[%s],%s' % (ctime(), data))
 
-def Mainserver():
+def Mainserver(): #服务端部分
     print "Server Loaded!"
     while serverlooptick:
      if not ServerConfig.Server_Password and data:
@@ -47,10 +47,10 @@ def Mainserver():
 
 t = threading.Thread(target=handle)
 t1 = threading.Thread(target=Mainserver)       #子线程
-if __name__ == '__main__':
+if __name__ == '__main__':   
     t.start()
     t1.start()
-    print 'waiting for connecting...'
+    print 'waiting for connecting...' #SOCKET部分
     while True:
         clientSock,addr = tcpSerSock.accept()
         print  'connected from:', addr
