@@ -1,0 +1,1 @@
+注意：服务端运行后，会将配置文件编译为pyc文件（主要是我懒得搞读写文件的），如想修改请删除serverconfig.pyc后对serverconfig.py进行编辑后再次运行服务端
