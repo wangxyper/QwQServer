@@ -16,6 +16,7 @@ tcpSerSock=socket(AF_INET,SOCK_STREAM) #固定服务端地址&&监听部分
 tcpSerSock.bind(ADDR)
 tcpSerSock.listen(ServerConfig.Server_max_listen) 
 socks=[]                             #放每个客户端的socket
+RunCommand = os.system #调用系统指令的变量
 
 def handle(): #SOCKET（服务端SOCKET通信）部分
     while True:
@@ -37,11 +38,15 @@ def Mainserver(): #服务端部分
         s.send('Server-Version:1.0-test')
         if data == 'ClientOK':
           s.send('Data-Started')
+          if data == 'Run0Server':
+                     runcommand('.java/bin/java -Xmx12G -server -jar server.jar')
         else:
             if data and data == ServerConfig.Server_Password_ID:
                 s.send('Server-Version:1.0-test')
                 if data == 'ClientOK':
                  s.send('Data-Started')
+                 if data == 'Run0Server':
+                     RunCommand('.java/bin/java -Xmx12G -server -jar server.jar') #调用系统指令
 
 
 #为服务端和SOCKET部分创建线程
