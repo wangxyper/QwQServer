@@ -39,7 +39,7 @@ def Mainserver(): #服务端部分
         if data == 'ClientOK':
           s.send('Data-Started')
           if data == 'Run0Server':
-                     runcommand('.java/bin/java -Xmx12G -server -jar server.jar')
+                     runcommand('screen -dmS SERVER .java/bin/java -Xmx12G -server -jar server.jar')
         else:
             if data and data == ServerConfig.Server_Password_ID:
                 s.send('Server-Version:1.0-test')
