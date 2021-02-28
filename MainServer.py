@@ -33,7 +33,7 @@ def handle(): #SOCKET（服务端SOCKET通信）部分
 
 def Mainserver(): #服务端部分
     print "Server Loaded!" #打印Server Loaded
-    while serverlooptick: #服务端循环TICK
+    while ServerConfig.Server_Loop_Tick: #服务端循环TICK
      if not ServerConfig.Server_Password and data:
         s.send('Server-Version:1.0-test')
         if data == 'ClientOK':
